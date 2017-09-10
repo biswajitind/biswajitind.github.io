@@ -1,0 +1,76 @@
+{
+  "website":{
+    "title": "Ayushman Dash's blog"
+  },
+  "nav":{
+    "home": "Home",
+    "about_me": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "career": "Career",
+    "publictations": "Publications",
+    "blog": "Blog",
+    "cv": "Curriculum Vitae",
+    "link": "Contact"
+    
+  },
+  "about_me":{
+    "about_me": "About Me",
+    "des": "I am Ayushman Dash and I am a Machine Learning/Deep Learning enthusiast. I have an affinity towards Artificial Intelligence (specifically Machine Learning and Deep Learning) and I aim at contributing as much as I can to these fields. My research interests are Sequence Learning, Generative Adversarial Networks, Sequence to Sequence Models, Siamese Network, Natural Language Understanding using Deep Learning, and Handwriting Recognition in Air. My current research project is on Visual Question Answering using Multi Modal Reasoning. Apart from my interests in AI I have a keen interest in Web Application development, Music Composition and Music Production."
+  },
+  "skills":{
+    "my_skills": "My Skills"
+  },
+  "projects":{
+    "my_projects": "My Projects",
+    "tacgan": "Text Conditioned Auxiliary Classifier Generative Adversarial Network, (TAC-GAN) is a text to image Generative Adversarial Network (GAN) for synthesizing images from their text descriptions. TAC-GAN builds upon the AC-GAN by conditioning the generated images on a text description instead of on a class label..",
+    "deeptrans": "Deep-Trans is a open-source project that I developed in collaboration with my ex-colleague Bhupen Chauhan. Considering the long temporal dependency of text in Indian languages and languages in general and with the domain Knowledge that we had from our past experiences, we extended our idea by creating a transliteration engine for English to Hindi phonetic conversion using an LSTM sequence to sequence model.",
+    "pewter": "Pewter is an open-source project for data acquisition, analysis, visualization of raw data from Myo and conduct experiments on it. You can create experiments and visualize the data for doing some analysis before pre-processing and feature extraction. Pewter was originally developed by me for data acquisition and analysis of raw data from Myo Armband for one of my other projects, Voice.",
+    "tlstm": "LSTM.transpose() is an experiment with an unfolded version of LSTMs. The hypothesis is that The gradients of a deep Neural Network following the same architecture of the LSTM unfolded through time (even those of the bottom layers) are efficiently trainable with Backpropagation, and won't be affected by the 'vanishing gradient' problem. This is the case even when the weights are not 'tied'",
+    "voice": "With an idea of using state of the art embodied sensors to track hand gestures and classify signs in Indian Sign language and convert that to speech, I am developing this open-source project using MYO-armband, Deep LSTMs with Connectionist Temporal Classifiers. This project is meant to be a starting point for anyone who is interested in doing further research in the same field or topic."
+  },
+  "career":{
+    "my_career": "My Career",
+    "mg": "Ovation MindGarage",
+    "mg_des": "I am working with MindGarage, an independent lab under the guidance of Prof. Marcus Liwicki, which with a vision of 'open minded research' focuses on Machine Learning and Deeplearning research. I help them in the administration, organisation of the lab. I even help students with their projects.",
+    "mg_date": "July 2017 - Present",
+    "mg_job": "Student Assistant",
+    "insiders": "Insiders Technologies GmbH",
+    "insiders_des": "Currently I work in the Natural Language Understanding team and I am involved in developing a Deep Question Answering model for real-world business use cases. Apart from that, I have been involved in developing a Deep Neural Network component for fraud detection",
+    "insiders_date": "January 2017 - Present",
+    "insiders_job": "Working Student",
+    "dfki": "Deutsche Forschungszentrum für Künstliche Intelligenz GmbH (DFKI)",
+    "dfki_des": "Now I am Working in the Multimedia Analysis and Data Mining team at Deutsche Forschungszentrum für Künstliche Intelligenz GmbH (DFKI) in the Multimedia Opinion Mining project. I am modelling trending events/news and analyzing them for visualizing opinions and trends in the world.",
+    "dfki_date": "August 2016 - January 2017",
+    "dfki_job": "Research Assistant",
+    "tukl_hci": "Department of Computer Graphics & HCI, TU Kaiserslautern",
+    "tukl_hci_des": "I worked on enhancing and maintaining the desktop client application for visualizing quality measures in automobiles for a project with Volkswagen.",
+    "tukl_hci_date": "February 2016 - June 2016",
+    "tukl_hci_job": "Research Assistant",
+    "tukl": "Technische Universität Kaiserslautern",
+    "tukl_des": "I Joined the masters cource in Computer Science - Artificial Intelligence at Technische Universität Kaiserslautern.",
+    "tukl_date": "October 2015 - Present",
+    "tukl_job": "Masters in Computer Science - Artificial Intelligence",
+    "rev": "Reverie Language Technologies Pvt. Ltd.",
+    "rev_des": "As a full stack web developer, I developed core products for Reverie and utility toolkits for internal teams. I Led a fast prototyping team of 3 for probable clients and developed and planned integration strategies with client applications. I also represented Reverie in tech events and competitions.",
+    "rev_date": "January 2014 - July 2015",
+    "rev_job": "Full Stack Web Developer",
+    "rev_url": "http://reverieinc.com/",
+    "tcs": "Tata Consultancy Services Ltd.",
+    "tcs_des": "As a Trainee I was trained on developing enterprise standard software applications using .NET framework and managing teams and projects using Microsoft Team Foundation Server.",
+    "tcs_date": "September 2013 - February 2014",
+    "tcs_job": "Software Engineer Trainee",
+    "college": "Graduation",
+    "college_des": "On July 2013,I graduated from college and entered the real world.",
+    "college_date": "July 2009 - July 2013",
+    "college_job": "Student"
+  },
+  "blog":{
+    "my_blog": "My Blog"
+  },
+  "link":{
+    "link": "Contact",
+    "view": "views"
+  }
+
+}

@@ -1,0 +1,23 @@
+- name: Python
+  percentage: 90
+
+- name: Tensorflow
+  percentage: 80
+
+- name: Scikit-learn
+  percentage: 90
+
+- name: HTML/CSS
+  percentage: 80
+
+- name: Node.js
+  percentage: 70
+
+- name: jQuery
+  percentage: 90
+
+- name: MongoDb
+  percentage: 85
+
+- name: Linux/Shell
+  percentage: 60

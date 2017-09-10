@@ -1,0 +1,41 @@
+- name: 'TAC-GAN'
+  i18n: 'tacgan'
+  url: '/dashayushman/TAC-GAN'
+  img: 'static/img/landing/tac-gan.png'
+  desc: 'Text Conditioned Auxiliary Classifier Generative Adversarial Network, (TAC-GAN) is a text to image Generative Adversarial Network (GAN) for synthesizing images from their text descriptions. TAC-GAN builds upon the AC-GAN by conditioning the generated images on a text description instead of on a class label. In the presented TAC-GAN model, the input vector of the Generative network is built based on a noise vector and another vector containing an embedded representation of the textual description. While the Discriminator is similar to that of the AC-GAN, it is also augmented to receive the text information as input before performing its classification.'
+
+- name: 'Deep-Trans'
+  i18n: 'deeptrans'
+  url: '/dashayushman/deep-trans'
+  img: 'static/img/landing/deeptrans.png'
+  desc: 'Deep-Trans is a open-source project that I developed in collaboration with my ex-colleague Bhupen Chauhan. Considering the long temporal dependency of text in Indian languages and languages in general and with the domain Knowledge that we had from our past experiences, we extended our idea by creating a transliteration engine for English to Hindi phonetic conversion using an LSTM sequence to sequence model.'
+
+- name: 'Pewter'
+  i18n: 'pewter'
+  url: '/sigvoiced/pewter'
+  img: 'static/img/landing/pewter.png'
+  desc: "Pewter is an open-source project for data acquisition, analysis, visualization of raw data from Myo and conduct experiments on it. You can create experiments and visualize the data for doing some analysis before pre-processing and feature extraction. Pewter was originally developed by me for data acquisition and analysis of raw data from Myo Armband for one of my other projects, Voice."
+
+- name: 'LSTM.transpose()'
+  i18n: 'tlstm'
+  url: '/vaulttech/lstmJam'
+  img: 'static/img/landing/tlstm.png'
+  desc: "LSTM.transpose() is an experiment with an unfolded version of LSTMs. The hypothesis is that The gradients of a deep Neural Network following the same architecture of the LSTM unfolded through time (even those of the bottom layers) are efficiently trainable with Backpropagation, and won't be affected by the 'vanishing gradient' problem. This is the case even when the weights are not 'tied'."
+
+- name: 'Voice (Under Development)'
+  i18n: 'voice'
+  url: '/sigvoiced/Voice'
+  img: 'static/img/landing/voice.png'
+  desc: With an idea of using state of the art embodied sensors to track hand gestures and classify signs in Indian Sign language and convert that to speech, I am developing this open-source project using MYO-armband, Deep LSTMs with Connectionist Temporal Classifiers. This project is meant to be a starting point for anyone who is interested in doing further research in the same field or topic.
+
+- name: 'Air-Script'
+  i18n: 'Air-Script'
+  url: '/dashayushman/air-script'
+  img: 'static/img/landing/air-script.png'
+  desc: Air-Script is a CNN + Sequence to Sequence model for detecting handwriting on air using a Myo-Armband. It is Inspired by ‘Recursive Recurrent Nets with Attention Modeling for OCR in the Wild’ by Chen-Yu & Simon, 2016. The idea was to use 1D-CNNs as feature extractors and a sequence to sequence model with Attention mechanism introduced by Bahdanau et al., 2014 using LSTMs for variable length sequence classification.
+
+- name: 'Autodoc'
+  i18n: 'Autodoc'
+  url: '/vaulttech/autodoc'
+  img: 'static/img/landing/autodoc.png'
+  desc: A project for pretraining a Convolutional Autoencoder and then using the encoder weights to retraining another Convolutional Neural network as a transfer learning mechanism. It is being evaluated with the Tobacco dataset for documents.
