@@ -1,0 +1,4 @@
+alias c=clear
+alias h=history
+alias p=pwd
+alias l='ls -alrt'
