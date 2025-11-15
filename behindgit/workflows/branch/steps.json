@@ -1,0 +1,56 @@
+[
+  {
+    "name": "init",
+    "short": "Initialize a git repository",
+    "long": "git init creates an empty Git repository.\nIt sets up the .git directory with all metadata.\n",
+    "command": "git init"
+  },
+  {
+    "name": "create branch",
+    "short": "Create and switch to a new branch",
+    "long": "git checkout -b feature/login creates a new branch named \"feature/login\"\nand switches your working copy to that branch.\n",
+    "command": "git checkout -b feature/login"
+  },
+  {
+    "name": "make change",
+    "short": "Create a new file on the feature branch",
+    "long": "This creates a file representing your feature work.\nThe change exists only on the current branch until merged.\n",
+    "command": "echo \"feature work\" > feature.txt"
+  },
+  {
+    "name": "git add",
+    "short": "Add file to staging area",
+    "long": "git add feature.txt stages the file so that the next commit includes it.\n",
+    "command": "git add feature.txt"
+  },
+  {
+    "name": "git commit",
+    "short": "Commit changes to the feature branch",
+    "long": "git commit -m \"Add feature file\" records the staged changes\ninto the repository history on the current branch.\n",
+    "command": "git commit -m \"Add feature file\""
+  },
+  {
+    "name": "switch to main",
+    "short": "Return to the main branch",
+    "long": "git checkout main switches your working copy back to the main branch,\npreparing for a merge.\n",
+    "command": "git checkout main"
+  },
+  {
+    "name": "merge branch",
+    "short": "Merge the feature into main",
+    "long": "git merge feature/login integrates the feature branch's commits into main.\nIf there are conflicts, Git will prompt you to resolve them.\n",
+    "command": "git merge feature/login"
+  },
+  {
+    "name": "delete branch",
+    "short": "Delete the merged feature branch locally",
+    "long": "git branch -d feature/login removes the local branch reference\nafter it has been merged.\n",
+    "command": "git branch -d feature/login"
+  },
+  {
+    "name": "git log",
+    "short": "Show the commit history with a graph",
+    "long": "This is a readonly command; it does not change files.\ngit log --oneline --graph --decorate --all displays a compact\ngraph of commit history across branches.\n",
+    "command": "git log --oneline --graph --decorate --all"
+  }
+]

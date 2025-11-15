@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BehindGit - Landing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="assets/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bg-white border-bottom">
+      <div class="container-fluid py-3">
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <span class="brand-mark rounded-circle d-inline-block"></span>
+          </div>
+          <div>
+            <h1 class="brand-title h4 mb-0"><a href="index.html" class="text-decoration-none text-reset">BehindGit</a></h1>
+            <small class="text-muted">Inspect what happens behind the scene of a git repo</small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-fluid my-4">
+      <div class="row g-3">
+        <!-- Left Sidebar -->
+        <aside class="col-md-3">
+          <div class="card shadow-sm sticky-top sidebar-card">
+            <div class="card-body">
+              <h3 class="h6 mb-2">Workflows</h3>
+              <div id="workflowList" class="workflow-list mt-2"></div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="col-md-9">
+          <section class="page-section">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h2 class="h5 mb-3">About BehindGit</h2>
+                <p class="text-muted">
+                  BehindGit helps you inspect what happens behind the scenes of a Git repository through
+                  simple, focused workflows. Explore curated sequences of Git commands and see how they
+                  relate to common version control tasks.
+                </p>
+                <div class="row g-3 mt-1">
+                  <div class="col-md-6">
+                    <div class="border rounded p-3 h-100">
+                      <h3 class="h6 mb-2">What you can do</h3>
+                      <ul class="mb-0">
+                        <li>Browse opinionated Git workflows</li>
+                        <li>Jump into steps of each workflow</li>
+                        <li>Review commands and context for learning</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="border rounded p-3 h-100">
+                      <h3 class="h6 mb-2">Getting started</h3>
+                      <ol class="mb-0">
+                        <li>Select a workflow from the left panel</li>
+                        <li>Open step 1 to begin</li>
+                        <li>Navigate across steps as needed</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer class="container py-4">
+      <div class="text-center text-muted small">
+        &copy; <span id="year"></span> BehindGit
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
+  </body>
+  </html>
+

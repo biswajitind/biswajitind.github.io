@@ -1,0 +1,32 @@
+[
+  {
+    "name": "init",
+    "short": "Initialize a git repository",
+    "long": "git init creates an empty Git repository.\nIt sets up the .git directory with all metadata.\n",
+    "command": "git init"
+  },
+  {
+    "name": "init",
+    "short": "Create local file",
+    "long": "echo \"Hello, World!\" > readme.txt creates a local file with the content \"Hello, World!\".\n",
+    "command": "echo \"Hello, World!\" > readme.txt"
+  },
+  {
+    "name": "git add",
+    "short": "Add file to staging area",
+    "long": "git add readme.txt adds the file to the staging area.\nIt prepares the file for the next commit.\n",
+    "command": "git add readme.txt"
+  },
+  {
+    "name": "git commit",
+    "short": "Commit changes to repository",
+    "long": "git commit -m \"Add readme.txt\" commits the changes to the repository.\nIt creates a new commit with the message \"Add readme.txt\".\n",
+    "command": "git commit -m \"Add readme.txt\""
+  },
+  {
+    "name": "git log",
+    "short": "Show commit history",
+    "long": "This is a readonly command, It does not make any changes to files\nin work areas or repositories.\ngit log shows the commit history.\nIt displays the commit history in a tree format.\n",
+    "command": "git log"
+  }
+]

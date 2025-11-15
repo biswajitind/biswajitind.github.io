@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="../../../">
+    <title>BehindGit - Landing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="assets/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bg-white border-bottom">
+      <div class="container-fluid py-3">
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <span class="brand-mark rounded-circle d-inline-block"></span>
+          </div>
+          <div>
+            <h1 class="brand-title h4 mb-0"><a href="index.html" class="text-decoration-none text-reset">BehindGit</a></h1>
+            <small class="text-muted">Inspect what happens behind the scene of a git repo</small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-fluid my-4">
+      <div class="row g-3">
+        <!-- Left Sidebar -->
+        <aside class="col-md-3">
+          <div class="card shadow-sm sticky-top sidebar-card">
+            <div class="card-body">
+              <div class="mb-3">
+                <select id="workflowSelect" class="form-select">
+                  <option value="" selected disabled>Select a different workflow</option>
+                </select>
+              </div>
+              <hr class="my-3">
+              <h4 class="h6 mb-2">Commands</h4>
+              <div id="workflowCommands" class="workflow-commands"></div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="col-md-9">
+          <!-- Title section -->
+          <section class="page-section">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h2 class="h5 mb-2">Workflow: 02_branch</h2>
+                <p class="text-muted mb-0">A workflow to create a new branch and make changes to it.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Command and Output (single section) -->
+          <section class="page-section">
+            <div class="row g-3">
+              <!-- Left: Terminal panel (2/3) -->
+              <div class="col-md-8">
+                <div class="terminal shadow-sm">
+                  <div class="terminal-header">
+                    <div class="terminal-header-left">
+                      <button id="navPrev" class="terminal-nav-btn" type="button" aria-label="Previous" title="Previous">‹</button>
+                    </div>
+                    <div class="terminal-header-center">
+                      <span class="dot dot-red"></span>
+                      <span class="dot dot-yellow"></span>
+                      <span class="dot dot-green"></span>
+                      <span class="terminal-title">Terminal</span>
+                    </div>
+                    <div class="terminal-header-right">
+                      <button id="navNext" class="terminal-nav-btn" type="button" aria-label="Next" title="Next">›</button>
+                    </div>
+                  </div>
+                  <div class="terminal-body">
+                    <div class="terminal-group">
+                      <textarea id="cmdTerminal" class="terminal-textarea" readonly placeholder="Terminal ready.">$ git clone https://github.com/biswajitind/moon.git .
+</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right: Details (1/3) -->
+              <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <textarea id="cmdDetails" class="details-textarea" readonly placeholder="Details about the command will appear here...">git clone &lt;repository-url&gt; clones a git repository from a remote URL.
+It creates a new directory with a copy of the repository.</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Before / After section (equal widths) -->
+          <section class="page-section">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <h3 class="h6 mb-3">Before</h3>
+                    <div id="beforeContent"><span class="text-muted">No files</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <h3 class="h6 mb-3">After</h3>
+                    <div id="afterContent"><ul class="mb-0 small">
+<li class="diff-added">.git/</li>
+<li class="diff-added">.git/HEAD</li>
+<li class="diff-added">.git/config</li>
+<li class="diff-added">.git/description</li>
+<li class="diff-added">.git/hooks/</li>
+<li class="diff-added">.git/hooks/applypatch-msg.sample</li>
+<li class="diff-added">.git/hooks/commit-msg.sample</li>
+<li class="diff-added">.git/hooks/fsmonitor-watchman.sample</li>
+<li class="diff-added">.git/hooks/post-update.sample</li>
+<li class="diff-added">.git/hooks/pre-applypatch.sample</li>
+<li class="diff-added">.git/hooks/pre-commit.sample</li>
+<li class="diff-added">.git/hooks/pre-merge-commit.sample</li>
+<li class="diff-added">.git/hooks/pre-push.sample</li>
+<li class="diff-added">.git/hooks/pre-rebase.sample</li>
+<li class="diff-added">.git/hooks/pre-receive.sample</li>
+<li class="diff-added">.git/hooks/prepare-commit-msg.sample</li>
+<li class="diff-added">.git/hooks/push-to-checkout.sample</li>
+<li class="diff-added">.git/hooks/sendemail-validate.sample</li>
+<li class="diff-added">.git/hooks/update.sample</li>
+<li class="diff-added">.git/index</li>
+<li class="diff-added">.git/info/</li>
+<li class="diff-added">.git/info/exclude</li>
+<li class="diff-added">.git/logs/</li>
+<li class="diff-added">.git/logs/HEAD</li>
+<li class="diff-added">.git/logs/refs/</li>
+<li class="diff-added">.git/logs/refs/heads/</li>
+<li class="diff-added">.git/logs/refs/heads/main</li>
+<li class="diff-added">.git/logs/refs/remotes/</li>
+<li class="diff-added">.git/logs/refs/remotes/origin/</li>
+<li class="diff-added">.git/logs/refs/remotes/origin/HEAD</li>
+<li class="diff-added">.git/objects/</li>
+<li class="diff-added">.git/objects/info/</li>
+<li class="diff-added">.git/objects/pack/</li>
+<li class="diff-added">.git/objects/pack/pack-0fbaea5bbe52e12789cbbfa4b863915dd5240867.idx</li>
+<li class="diff-added">.git/objects/pack/pack-0fbaea5bbe52e12789cbbfa4b863915dd5240867.pack</li>
+<li class="diff-added">.git/objects/pack/pack-0fbaea5bbe52e12789cbbfa4b863915dd5240867.rev</li>
+<li class="diff-added">.git/packed-refs</li>
+<li class="diff-added">.git/refs/</li>
+<li class="diff-added">.git/refs/heads/</li>
+<li class="diff-added">.git/refs/heads/main</li>
+<li class="diff-added">.git/refs/remotes/</li>
+<li class="diff-added">.git/refs/remotes/origin/</li>
+<li class="diff-added">.git/refs/remotes/origin/HEAD</li>
+<li class="diff-added">.git/refs/tags/</li>
+<li class="diff-added">.gitignore</li>
+<li class="diff-added">README.md</li>
+<li class="diff-added">main.py</li>
+<li class="diff-added">test_main.py</li>
+</ul></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer class="container py-4">
+      <div class="text-center text-muted small">
+        &copy; <span id="year"></span> BehindGit
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
+  </body>
+  </html>
+

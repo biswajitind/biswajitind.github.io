@@ -1,0 +1,56 @@
+[
+  {
+    "name": "clone",
+    "short": "Clone a git repository",
+    "long": "git clone <repository-url> clones a git repository from a remote URL.\nIt creates a new directory with a copy of the repository.\n",
+    "command": "git clone https://github.com/biswajitind/moon.git ."
+  },
+  {
+    "name": "create a branch",
+    "short": "Create a new branch",
+    "long": "git checkout -b <branch-name> creates a new branch named <branch-name>\nand switches your working copy to that branch.\n",
+    "command": "git checkout -b PR/BUG_123"
+  },
+  {
+    "name": "make a change",
+    "short": "Make a change in the PR branch",
+    "long": "update the README.md \n",
+    "command": "echo \"Do not modify anything in this repository\" > README.md"
+  },
+  {
+    "name": "add the change",
+    "short": "Add the change to the staging area",
+    "long": "git add README.md adds the file to the staging area\n",
+    "command": "git add README.md"
+  },
+  {
+    "name": "commit to branch",
+    "short": "Commit the change to the branch",
+    "long": "git commit -m \"Add feature file\" records the staged changes\ninto the repository\n",
+    "command": "git commit -m \"Commit changes to PR branch\""
+  },
+  {
+    "name": "checkout main",
+    "short": "Checkout the main branch",
+    "long": "git checkout main switches your working copy back to the main branch\n",
+    "command": "git checkout main"
+  },
+  {
+    "name": "merge branch",
+    "short": "Merge the PR branch into main",
+    "long": "git merge PR/BUG_123 integrates the PR branch's commits into main.\nIf there are conflicts, Git will prompt you to resolve them.\n",
+    "command": "git merge PR/BUG_123"
+  },
+  {
+    "name": "log - graph",
+    "short": "Show the commit history with a graph",
+    "long": "git log --oneline --graph --decorate --all displays a compact\ngraph of commit history across branches.\n",
+    "command": "git log --oneline --graph --decorate --all"
+  },
+  {
+    "name": "delete branch",
+    "short": "Delete the PR branch locally",
+    "long": "git branch -d PR/BUG_123 removes the PR branch from the repository locally\n",
+    "command": "git branch -d PR/BUG_123"
+  }
+]

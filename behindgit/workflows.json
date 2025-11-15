@@ -1,0 +1,12 @@
+[
+  {
+    "id": "01_simple",
+    "name": "01_simple",
+    "description": "A very simple git commands workflow."
+  },
+  {
+    "id": "02_branch",
+    "name": "02_branch",
+    "description": "A workflow to create a new branch and make changes to it."
+  }
+]
