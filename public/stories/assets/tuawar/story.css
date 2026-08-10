@@ -232,7 +232,7 @@ main {
 }
 
 .story-section:nth-child(4) {
-  --section-wash: linear-gradient(180deg, #cc9768, #aa755b 58%, #76565a);
+  --section-wash: linear-gradient(180deg, #cc9768, #c58e6b 58%, #c08b70);
 }
 
 .story-section:nth-child(5) {

@@ -52,6 +52,21 @@ const readWebpDimensions = (buffer, asset) => {
   assert.fail(`${asset} has unsupported WebP chunk type ${JSON.stringify(chunkType)}`);
 };
 
+const relativeLuminance = (hex) => {
+  const channels = hex.slice(1).match(/.{2}/g).map((value) => parseInt(value, 16) / 255)
+    .map((value) => value <= 0.04045
+      ? value / 12.92
+      : ((value + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+};
+
+const contrastRatio = (foreground, background) => {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  return (Math.max(foregroundLuminance, backgroundLuminance) + 0.05)
+    / (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+};
+
 assert(articleMatch, 'missing #story article');
 const articleParagraphs = articleMatch[0].match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g) || [];
 assert.equal(
@@ -73,6 +88,21 @@ assert.match(css, /@media\s*\(max-width:\s*40rem\)/);
 assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 assert.match(css, /:focus-visible/);
 assert.match(css, /max-width:\s*72ch/);
+
+const charcoal = css.match(/--charcoal:\s*(#[\da-f]{6})/i)?.[1];
+const sectionFour = css.match(/\.story-section:nth-child\(4\)\s*{([\s\S]*?)}/)?.[1];
+const sectionFourWash = sectionFour?.match(/--section-wash:\s*linear-gradient\(([\s\S]*?)\);/)?.[1];
+assert(charcoal, 'missing hexadecimal --charcoal value');
+assert(sectionFourWash, 'missing section-four linear gradient');
+const sectionFourStops = [...sectionFourWash.matchAll(/#[\da-f]{6}/gi)].map(([color]) => color);
+assert(sectionFourStops.length >= 2, 'section-four gradient needs at least two color stops');
+const sectionFourContrasts = sectionFourStops.map((background) => contrastRatio(charcoal, background));
+const minimumSectionFourContrast = Math.min(...sectionFourContrasts);
+// Preserve headroom for the 2% dark parchment grain layered above the section wash.
+assert(
+  minimumSectionFourContrast >= 4.75,
+  `section-four base contrast ${minimumSectionFourContrast.toFixed(2)}:1 is below the 4.75:1 texture-safe minimum`,
+);
 
 for (const asset of ['tua-river.webp', 'luro-returns.webp', 'food-war.webp', 'numo-celebration.webp']) {
   assert.match(html, new RegExp(`assets/tuawar/${asset.replace('.', '\\.')}`));
