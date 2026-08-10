@@ -6,9 +6,11 @@ const root = resolve(import.meta.dirname, '..');
 const markdownPath = resolve(root, 'public/stories/tuawar.md');
 const htmlPath = resolve(root, 'public/stories/tuawar.html');
 const cssPath = resolve(root, 'public/stories/assets/tuawar/story.css');
+const jsPath = resolve(root, 'public/stories/assets/tuawar/story.js');
 const html = readFileSync(htmlPath, 'utf8');
 const markdown = readFileSync(markdownPath, 'utf8');
 const css = readFileSync(cssPath, 'utf8');
+const js = readFileSync(jsPath, 'utf8');
 
 const decode = (value) => value
   .replaceAll('&ldquo;', '“').replaceAll('&rdquo;', '”')
@@ -80,6 +82,11 @@ assert.match(html, /id="reading-progress"/);
 assert.match(html, /aria-label="Reading progress"/);
 assert.match(html, /assets\/tuawar\/story\.css/);
 assert.match(html, /assets\/tuawar\/story\.js/);
+assert.match(js, /documentElement\.classList\.add\(['"]js['"]\)/);
+assert.match(js, /requestAnimationFrame/);
+assert.match(js, /aria-valuenow/);
+assert.match(js, /IntersectionObserver/);
+assert.match(js, /prefers-reduced-motion/);
 
 for (const token of ['--parchment', '--clay', '--charcoal', '--river', '--olive']) {
   assert(css.includes(token), `missing CSS token ${token}`);
