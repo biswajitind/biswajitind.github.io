@@ -18,11 +18,81 @@ const decode = (value) => value
   .replaceAll('&#39;', "'").replaceAll('&quot;', '"');
 const stripTags = (value) => decode(value.replace(/<[^>]+>/g, ' '))
   .replace(/\s+/g, ' ').trim();
-const markdownProse = markdown.split('\n')
-  .filter((line) => line.trim() && !line.startsWith('#') && line !== '*First draft*')
-  .join(' ').replace(/\s+/g, ' ').trim();
 const articleMatch = html.match(/<article id="story"[\s\S]*?<\/article>/);
 const assetDirectory = resolve(root, 'public/stories/assets/tuawar');
+
+const parseMarkdownStory = (source) => {
+  const sections = [{ heading: null, paragraphs: [] }];
+  let currentSection = sections[0];
+  let paragraphLines = [];
+
+  const finishParagraph = () => {
+    if (paragraphLines.length === 0) return;
+    currentSection.paragraphs.push(paragraphLines.join(' ').replace(/\s+/g, ' ').trim());
+    paragraphLines = [];
+  };
+
+  for (const line of source.replaceAll('\r\n', '\n').split('\n')) {
+    const headingMatch = line.match(/^##\s+(.+?)\s*$/);
+    if (headingMatch) {
+      finishParagraph();
+      currentSection = { heading: headingMatch[1], paragraphs: [] };
+      sections.push(currentSection);
+    } else if (!line.trim()) {
+      finishParagraph();
+    } else if (!line.startsWith('# ') && line !== '*First draft*') {
+      paragraphLines.push(line.trim());
+    }
+  }
+  finishParagraph();
+
+  return sections;
+};
+
+const parseHtmlStory = (source) => {
+  const sourceArticle = source.match(/<article id="story"[\s\S]*?<\/article>/);
+  assert(sourceArticle, 'missing #story article');
+  const sections = [...sourceArticle[0].matchAll(
+    /<section\b[^>]*class="[^"]*\bstory-section\b[^"]*"[^>]*>([\s\S]*?)<\/section>/g,
+  )].map(([, section]) => ({
+    paragraphs: (section.match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g) || []).map(stripTags),
+  }));
+
+  return {
+    headings: [...sourceArticle[0].matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/g)]
+      .map(([, heading]) => stripTags(heading)),
+    sections,
+  };
+};
+
+const assertStoryParity = (markdownSource, htmlSource) => {
+  const markdownSections = parseMarkdownStory(markdownSource);
+  const htmlStory = parseHtmlStory(htmlSource);
+  const markdownHeadings = markdownSections
+    .flatMap(({ heading }) => heading === null ? [] : [heading]);
+
+  assert.deepEqual(
+    htmlStory.headings,
+    markdownHeadings,
+    'ordered HTML h2 text differs from ordered Markdown ## headings',
+  );
+  assert.equal(
+    htmlStory.sections.length,
+    markdownSections.length,
+    'HTML story section count differs from Markdown segment count',
+  );
+  htmlStory.sections.forEach((section, index) => {
+    assert.deepEqual(
+      section.paragraphs,
+      markdownSections[index].paragraphs,
+      `HTML section ${index + 1} paragraphs differ from its Markdown segment`,
+    );
+  });
+};
+
+const collectRevealTargetTags = (source) => [...source.matchAll(/<(([a-z][\w-]*)\b[^>]*)>/gi)]
+  .filter(([, openingTag]) => /\bclass="[^"]*\breveal\b[^"]*"/.test(openingTag))
+  .map(([, , tagName]) => tagName.toLowerCase());
 
 const readWebpDimensions = (buffer, asset) => {
   assert(buffer.length >= 30, `${asset} is too small to be a valid WebP`);
@@ -70,11 +140,44 @@ const contrastRatio = (foreground, background) => {
 };
 
 assert(articleMatch, 'missing #story article');
-const articleParagraphs = articleMatch[0].match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g) || [];
+const headingMutation = html.replace(
+  '>The Voyager Returns</h2>',
+  '>The Voyager Departs</h2>',
+);
+const proseMutation = html.replace(
+  '<p>A river ran through the middle of Tua.</p>',
+  '<p>A road ran through the middle of Tua.</p>',
+);
+assert.notEqual(headingMutation, html, 'heading mutation fixture must alter production HTML');
+assert.notEqual(proseMutation, html, 'prose mutation fixture must alter production HTML');
+assert.throws(
+  () => assertStoryParity(markdown, headingMutation),
+  /ordered HTML h2 text differs from ordered Markdown ## headings/,
+  'heading mutation must be rejected',
+);
+assert.throws(
+  () => assertStoryParity(markdown, proseMutation),
+  /HTML section 2 paragraphs differ from its Markdown segment/,
+  'section prose mutation must be rejected',
+);
+assertStoryParity(markdown, html);
+
+const expectedRevealTargetTags = ['h2', 'figure', 'h2', 'figure', 'h2', 'figure', 'h2', 'figure'];
+const productionRevealTargetTags = collectRevealTargetTags(html);
 assert.equal(
-  articleParagraphs.map(stripTags).join(' ').replace(/\s+/g, ' ').trim(),
-  markdownProse,
-  'HTML prose differs from Markdown',
+  productionRevealTargetTags.length,
+  expectedRevealTargetTags.length,
+  'production HTML must contain exactly eight .reveal targets',
+);
+assert.deepEqual(
+  productionRevealTargetTags,
+  expectedRevealTargetTags,
+  'production .reveal targets must be the four chapter h2 headings and four story figures',
+);
+assert.deepEqual(
+  collectRevealTargetTags(articleMatch[0]),
+  expectedRevealTargetTags,
+  'all production .reveal targets must be inside the story article',
 );
 assert.equal((html.match(/class="story-section/g) || []).length, 5);
 assert.equal((html.match(/class="story-illustration/g) || []).length, 4);

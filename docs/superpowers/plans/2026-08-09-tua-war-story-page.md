@@ -376,4 +376,3 @@ Do not create an empty commit.
 Run: `git diff bc2727e0901c59bcca939c7bf3abc0bf6a23d864..HEAD --stat`
 
 Expected: only design/plan documentation, story page, story assets, and verifier are added; `index.html` and `public/stories/tuawar.md` are absent.
-
