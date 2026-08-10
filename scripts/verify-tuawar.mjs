@@ -74,9 +74,22 @@ for (const asset of ['tua-river.webp', 'luro-returns.webp', 'food-war.webp', 'nu
 const dividerPath = resolve(assetDirectory, 'river-divider.svg');
 assert(existsSync(dividerPath), 'missing river-divider.svg');
 const divider = readFileSync(dividerPath, 'utf8');
-assert.match(divider, /^<svg\b/, 'river-divider.svg is not an SVG');
-assert.match(divider, /\bwidth="320"/);
-assert.match(divider, /\bheight="44"/);
-assert.match(divider, /\bviewBox="0 0 320 44"/);
+const malformedDividerFixture = '<svg stroke-width="320" data-height="44" data-viewBox="0 0 320 44">';
+const dividerRootMatch = divider.match(/^<svg\b[^>]*>/);
+const requiredDividerRootAttributes = [
+  ['width', /(?:^|\s)width="320"(?=\s|\/?>)/],
+  ['height', /(?:^|\s)height="44"(?=\s|\/?>)/],
+  ['viewBox', /(?:^|\s)viewBox="0 0 320 44"(?=\s|\/?>)/],
+];
+
+assert(dividerRootMatch, 'river-divider.svg is missing its root <svg> opening tag');
+for (const [attribute, pattern] of requiredDividerRootAttributes) {
+  assert.doesNotMatch(
+    malformedDividerFixture,
+    pattern,
+    `malformed fixture must not satisfy the root ${attribute} requirement`,
+  );
+  assert.match(dividerRootMatch[0], pattern, `river-divider.svg root is missing ${attribute}`);
+}
 
 console.log('Tua War page verification passed.');
