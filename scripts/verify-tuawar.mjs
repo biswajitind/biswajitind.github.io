@@ -5,8 +5,10 @@ import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 const markdownPath = resolve(root, 'public/stories/tuawar.md');
 const htmlPath = resolve(root, 'public/stories/tuawar.html');
+const cssPath = resolve(root, 'public/stories/assets/tuawar/story.css');
 const html = readFileSync(htmlPath, 'utf8');
 const markdown = readFileSync(markdownPath, 'utf8');
+const css = readFileSync(cssPath, 'utf8');
 
 const decode = (value) => value
   .replaceAll('&ldquo;', '“').replaceAll('&rdquo;', '”')
@@ -63,6 +65,14 @@ assert.match(html, /id="reading-progress"/);
 assert.match(html, /aria-label="Reading progress"/);
 assert.match(html, /assets\/tuawar\/story\.css/);
 assert.match(html, /assets\/tuawar\/story\.js/);
+
+for (const token of ['--parchment', '--clay', '--charcoal', '--river', '--olive']) {
+  assert(css.includes(token), `missing CSS token ${token}`);
+}
+assert.match(css, /@media\s*\(max-width:\s*40rem\)/);
+assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+assert.match(css, /:focus-visible/);
+assert.match(css, /max-width:\s*72ch/);
 
 for (const asset of ['tua-river.webp', 'luro-returns.webp', 'food-war.webp', 'numo-celebration.webp']) {
   assert.match(html, new RegExp(`assets/tuawar/${asset.replace('.', '\\.')}`));
