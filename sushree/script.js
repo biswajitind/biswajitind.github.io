@@ -2,7 +2,6 @@
   var toggle = document.querySelector('.nav-toggle');
   var menu = document.getElementById('nav-menu');
   if (!toggle || !menu) return;
-  document.documentElement.classList.add('js');
   toggle.hidden = false;
 
   function setOpen(open) {
